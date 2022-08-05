@@ -4,9 +4,63 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+    <title>ToDo App</title>
   </head>
   <body>
+    <div class="todoContainer">
+      <div class="headerContainer">
+        <h1>ToDo App</h1>
+      </div>
+      <div class="sidebarContainer">
+        <h2>Projects</h2>
+        <div class="projObj">
+          <img src="./images/format-list-bulleted-square.png" alt="" />
+          <p>exapmle</p>
+          <button class="killProj"></button>
+        </div>
+        <button class="projectsBtn">Create new project</button>
+        <div class="addProject">
+          <img src="./images/format-list-bulleted-square.png" alt="" />
+          <input
+            type="text"
+            class="addProjectName"
+            placeholder="Project Name"
+          />
+          <button class="addProjectBtn">Add</button>
+          <button class="cancelProjectBtn">Cancel</button>
+        </div>
+      </div>
+      <div class="taskHeaderContainer">
+        <h2>Project</h2>
+      </div>
+      <div class="mainContainer">
+        <button class="addTask">Add Task</button>
+        <div class="taskContainer">
+          <div class="taskTop">
+            <button class="checkTask">C</button>
+            <h3 class="taskTitle">Fart</h3>
+            <div class="taskBtns">
+              <button class="expandBtn">v</button>
+              <button class="deleteBtn">x</button>
+            </div>
+          </div>
+          <div class="taskBottom">
+            <p class="taskDesc">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
+              rerum ipsum at!
+            </p>
+            <button class="editTask">E</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <script src="./main.js"></script>
   </body>
 </html>

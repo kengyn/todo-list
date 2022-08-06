@@ -12,6 +12,12 @@
   grid-template-rows: 70px 1fr;
 }
 
+.hidden {
+  transform: scale(0);
+  position: absolute;
+}
+
+/* HEADER */
 .headerContainer {
   background-color: #3d405b;
   grid-area: 1 / 1 / 2 / 2;
@@ -29,11 +35,16 @@
   align-items: flex-end;
   padding-bottom: 10px;
 }
+/* HEADER */
 
-/* sidebar */
+/* SIDEBAR */
 .sidebarContainer {
   background-color: #f2cc8f;
   padding: 10px;
+}
+
+.sidebarContainer,
+.projectContainer {
   display: flex;
   flex-direction: column;
 }
@@ -47,6 +58,8 @@
   display: grid;
   grid-template-columns: 24px 1fr 24px;
   align-items: center;
+  padding: 5px 0 5px 0;
+  border-radius: 5px;
 }
 
 .killProj {
@@ -54,13 +67,14 @@
   width: 20px;
   height: 20px;
   background-position: center;
-  background-color: #f2cc8f;
+  background-color: transparent;
   border: none;
 }
 
+.projObj:hover,
 .killProj:hover {
-  background-color: #b9a37f;
   cursor: pointer;
+  background-color: #b9a37f;
 }
 
 .sidebarContainer .projectsBtn {
@@ -118,13 +132,88 @@
   border: none;
   cursor: pointer;
 }
+/* SIDEBAR */
 
-/* sidebar */
-
+/* MAIN */
 .mainContainer {
+  padding: 30px;
   background-color: #f4f1de;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.hidden {
-  transform: scale(0);
+.addTaskBtn {
+  background-color: #3d405b;
+  color: #f4f1de;
+  width: 45%;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
 }
+
+.taskContainer {
+  display: grid;
+  grid-template-rows: auto;
+  margin-top: 10px;
+  position: relative;
+  width: 60%;
+}
+.task {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 30px 1fr 1fr 60px;
+  background-color: #f2cc8f;
+}
+
+.taskDetails {
+  background-color: #f2cc8f;
+}
+
+.taskCheck {
+  width: 20px;
+  height: 20px;
+  border: solid 2px black;
+  border-radius: 50%;
+}
+
+.checked {
+  background-image: url(./images/check.png);
+  background-position: center;
+  background-size: 100%;
+  background-origin: border-box;
+}
+
+.expandBtn,
+.deleteBtn,
+.editTask {
+  width: 20px;
+  height: 20px;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.expandBtn {
+  background-image: url(./images/chevron-down.png);
+  margin-right: 10px;
+}
+.deleteBtn {
+  background-image: url(./images/trashcan.png);
+}
+
+.taskDetails {
+  display: grid;
+  grid-template-columns: 1fr 60px;
+  justify-items: center;
+  align-items: center;
+  padding: 0 10px 10px 10px;
+}
+.editTask {
+  background-image: url(./images/square-edit-outline.png);
+}
+/* MAIN */

@@ -20,13 +20,20 @@
       </div>
       <div class="sidebarContainer">
         <h2>Projects</h2>
-        <div class="projObj">
-          <img src="./images/format-list-bulleted-square.png" alt="" />
-          <p>exapmle</p>
-          <button class="killProj"></button>
+        <div class="projectContainer">
+          <div class="projObj">
+            <img src="./images/format-list-bulleted-square.png" alt="" />
+            <p>exapmle</p>
+            <button class="killProj"></button>
+          </div>
+          <div class="projObj">
+            <img src="./images/format-list-bulleted-square.png" alt="" />
+            <p>exapmle</p>
+            <button class="killProj"></button>
+          </div>
         </div>
         <button class="projectsBtn">Create new project</button>
-        <div class="addProject">
+        <div class="addProject hidden">
           <img src="./images/format-list-bulleted-square.png" alt="" />
           <input
             type="text"
@@ -41,22 +48,43 @@
         <h2>Project</h2>
       </div>
       <div class="mainContainer">
-        <button class="addTask">Add Task</button>
+        <button class="addTaskBtn">Add Task</button>
         <div class="taskContainer">
-          <div class="taskTop">
-            <button class="checkTask">C</button>
-            <h3 class="taskTitle">Fart</h3>
+          <div class="task">
+            <div class="taskCheck"></div>
+            <p class="taskTitle">Fart</p>
+            <p>2022-08-25</p>
             <div class="taskBtns">
-              <button class="expandBtn">v</button>
-              <button class="deleteBtn">x</button>
+              <button class="expandBtn"></button>
+              <button class="deleteBtn"></button>
             </div>
           </div>
-          <div class="taskBottom">
+          <div class="taskDetails hidden">
             <p class="taskDesc">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
               rerum ipsum at!
             </p>
-            <button class="editTask">E</button>
+            <button class="editTask"></button>
+          </div>
+        </div>
+        <div class="taskContainer">
+          <div class="task">
+            <div class="taskCheck checked"></div>
+            <p class="taskTitle">Fart</p>
+            <p>2022-08-25</p>
+            <div class="taskBtns">
+              <button class="expandBtn"></button>
+              <button class="deleteBtn"></button>
+            </div>
+          </div>
+          <div class="taskDetails">
+            <p class="taskDesc">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
+              est harum sapiente incidunt inventore nam quisquam, itaque ipsam
+              assumendorrupti ut ipsa nisi inventore? Itaque quia architecto
+              vitae at, excepturi voluptatem adipisci?
+            </p>
+            <button class="editTask"></button>
           </div>
         </div>
       </div>

@@ -44,12 +44,37 @@
       </div>
       <div class="main-container">
         <button class="add-task-btn">Add Task</button>
+        <div class="add-task-container hidden">
+          <div class="input-container add-task-title-container">
+            <label for="add-task-title">Name:</label>
+            <input type="text" id="add-task-title" class="add-task-title" />
+          </div>
+
+          <div class="input-container add-due-date-container">
+            <label for="add-due-date">Date:</label>
+            <input type="date" id="add-due-date" class="add-due-date" />
+          </div>
+          <div class="input-container add-task-details-container">
+            <label for="add-task-details">Details:</label>
+            <!-- <input type="text" id="add-task-details" class="add-task-details" /> -->
+            <textarea
+              name="add-task-details"
+              id="add-task-details"
+              cols="30"
+              rows="2"
+            ></textarea>
+          </div>
+          <div class="add-task-btns-container">
+            <button class="confirm-task-btn">Add</button>
+            <button class="cancel-task-btn">Cancel</button>
+          </div>
+        </div>
         <div class="task-container">
           <div class="task">
             <div class="check-task"></div>
             <p class="task-title">Fart</p>
-            <p>2022-08-25</p>
-            <div class="taskBtns">
+            <p class="due-date">2022-08-25</p>
+            <div class="task-btns-container">
               <button class="expand-btn"></button>
               <button class="delete-btn"></button>
             </div>
@@ -64,6 +89,6 @@
         </div>
       </div>
     </div>
-    <script src="./main.js"></script>
+    <script src="../src/dom-module.js"></script>
   </body>
 </html>

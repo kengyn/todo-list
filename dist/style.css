@@ -121,7 +121,8 @@
   grid-area: 2 / 3 / 3 / 4;
 }
 
-.add-project-form button {
+.add-project-form button,
+.add-task-btns-container button {
   margin-top: 5px;
   padding: 5px 0 5px 0;
   width: 50%;
@@ -153,6 +154,49 @@
   cursor: pointer;
   border: none;
   border-radius: 5px;
+}
+
+.add-task-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) 140px;
+  grid-template-rows: repeat(2, 1fr);
+  width: 60%;
+  border: 1px solid black;
+  padding-bottom: 10px;
+  margin: 10px 0 0 0;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 10px 0 10px;
+}
+
+.input-container input,
+textarea {
+  font-size: 1rem;
+  background-color: #f4f1de;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+}
+
+.add-task-title-container {
+  grid-area: 1 / 1 / 3 / 3;
+  gap: 2px;
+}
+.add-task-details-container {
+  grid-area: 2 / 1 / 3 / 3;
+}
+
+.input-container textarea {
+  border: 1px solid black;
+}
+
+.add-task-btns-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .task-container {

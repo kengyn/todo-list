@@ -14,77 +14,52 @@
     <title>ToDo App</title>
   </head>
   <body>
-    <div class="todoContainer">
-      <div class="headerContainer">
+    <div class="todo-container">
+      <div class="header-container">
         <h1>ToDo App</h1>
       </div>
-      <div class="sidebarContainer">
+      <div class="sidebar-container">
         <h2>Projects</h2>
-        <div class="projectContainer">
-          <div class="projObj">
+        <div class="project-container">
+          <div class="project-obj">
             <img src="./images/format-list-bulleted-square.png" alt="" />
             <p>exapmle</p>
-            <button class="killProj"></button>
-          </div>
-          <div class="projObj">
-            <img src="./images/format-list-bulleted-square.png" alt="" />
-            <p>exapmle</p>
-            <button class="killProj"></button>
+            <button class="kill-project"></button>
           </div>
         </div>
-        <button class="projectsBtn">Create new project</button>
-        <div class="addProject hidden">
+        <button class="projects-btn">Create new project</button>
+        <div class="add-project-form hidden">
           <img src="./images/format-list-bulleted-square.png" alt="" />
           <input
             type="text"
-            class="addProjectName"
+            class="add-project-input"
             placeholder="Project Name"
           />
-          <button class="addProjectBtn">Add</button>
-          <button class="cancelProjectBtn">Cancel</button>
+          <button class="add-project-btn">Add</button>
+          <button class="cancel-project-btn">Cancel</button>
         </div>
       </div>
-      <div class="taskHeaderContainer">
+      <div class="task-header-container">
         <h2>Project</h2>
       </div>
-      <div class="mainContainer">
-        <button class="addTaskBtn">Add Task</button>
-        <div class="taskContainer">
+      <div class="main-container">
+        <button class="add-task-btn">Add Task</button>
+        <div class="task-container">
           <div class="task">
-            <div class="taskCheck"></div>
-            <p class="taskTitle">Fart</p>
+            <div class="check-task"></div>
+            <p class="task-title">Fart</p>
             <p>2022-08-25</p>
             <div class="taskBtns">
-              <button class="expandBtn"></button>
-              <button class="deleteBtn"></button>
+              <button class="expand-btn"></button>
+              <button class="delete-btn"></button>
             </div>
           </div>
-          <div class="taskDetails hidden">
-            <p class="taskDesc">
+          <div class="task-details hidden">
+            <p class="task-description">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis
               rerum ipsum at!
             </p>
-            <button class="editTask"></button>
-          </div>
-        </div>
-        <div class="taskContainer">
-          <div class="task">
-            <div class="taskCheck checked"></div>
-            <p class="taskTitle">Fart</p>
-            <p>2022-08-25</p>
-            <div class="taskBtns">
-              <button class="expandBtn"></button>
-              <button class="deleteBtn"></button>
-            </div>
-          </div>
-          <div class="taskDetails">
-            <p class="taskDesc">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere
-              est harum sapiente incidunt inventore nam quisquam, itaque ipsam
-              assumendorrupti ut ipsa nisi inventore? Itaque quia architecto
-              vitae at, excepturi voluptatem adipisci?
-            </p>
-            <button class="editTask"></button>
+            <button class="edit-task-btn"></button>
           </div>
         </div>
       </div>

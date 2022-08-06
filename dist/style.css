@@ -4,7 +4,7 @@
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
 }
-.todoContainer {
+.todo-container {
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -18,7 +18,7 @@
 }
 
 /* HEADER */
-.headerContainer {
+.header-container {
   background-color: #3d405b;
   grid-area: 1 / 1 / 2 / 2;
   color: #f4f1de;
@@ -26,7 +26,7 @@
   align-items: center;
   padding-left: 10px;
 }
-.taskHeaderContainer {
+.task-header-container {
   background-color: #3d405b;
   color: #f4f1de;
   grid-area: 1 / 2 / 2 / 3;
@@ -38,23 +38,23 @@
 /* HEADER */
 
 /* SIDEBAR */
-.sidebarContainer {
+.sidebar-container {
   background-color: #f2cc8f;
   padding: 10px;
 }
 
-.sidebarContainer,
-.projectContainer {
+.sidebar-container,
+.project-container {
   display: flex;
   flex-direction: column;
 }
 
-.sidebarContainer h2 {
+.sidebar-container h2 {
   border-bottom: solid 2px black;
   margin-bottom: 10px;
 }
 
-.sidebarContainer .projObj {
+.sidebar-container .project-obj {
   display: grid;
   grid-template-columns: 24px 1fr 24px;
   align-items: center;
@@ -62,7 +62,7 @@
   border-radius: 5px;
 }
 
-.killProj {
+.kill-project {
   background-image: url(./images/close.png);
   width: 20px;
   height: 20px;
@@ -71,13 +71,13 @@
   border: none;
 }
 
-.projObj:hover,
-.killProj:hover {
+.project-obj:hover,
+.kill-project:hover {
   cursor: pointer;
   background-color: #b9a37f;
 }
 
-.sidebarContainer .projectsBtn {
+.sidebar-container .projects-btn {
   background-color: #f2cc8f;
   border: solid 1px #b9a37f;
   border-radius: 5px;
@@ -88,22 +88,22 @@
   margin: 10px 0 10px 0;
 }
 
-.sidebarContainer .projectsBtn:hover {
+.sidebar-container .projects-btn:hover {
   background-color: #b9a37f;
 }
 
-.sidebarContainer .addProject {
+.sidebar-container .add-project-form {
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: 24px auto auto;
   align-items: center;
 }
 
-.addProject img {
+.add-project-form img {
   grid-area: 1 /1 / 2 / 2;
 }
 
-.addProject .addProjectName {
+.add-project-form .add-project-input {
   grid-area: 1 / 2 / 2 / 4;
   font-size: 1rem;
   background-color: #f2cc8f;
@@ -112,16 +112,16 @@
   border-bottom: 1px solid black;
 }
 
-.addProjectBtn {
+.add-project-btn {
   grid-area: 2 / 2 / 3 / 3;
   justify-self: flex-end;
   margin-right: 10px;
 }
-.cancelProjectBtn {
+.cancel-project-btn {
   grid-area: 2 / 3 / 3 / 4;
 }
 
-.addProject button {
+.add-project-form button {
   margin-top: 5px;
   padding: 5px 0 5px 0;
   width: 50%;
@@ -135,7 +135,7 @@
 /* SIDEBAR */
 
 /* MAIN */
-.mainContainer {
+.main-container {
   padding: 30px;
   background-color: #f4f1de;
   display: flex;
@@ -143,7 +143,7 @@
   align-items: center;
 }
 
-.addTaskBtn {
+.add-task-btn {
   background-color: #3d405b;
   color: #f4f1de;
   width: 45%;
@@ -155,7 +155,7 @@
   border-radius: 5px;
 }
 
-.taskContainer {
+.task-container {
   display: grid;
   grid-template-rows: auto;
   margin-top: 10px;
@@ -169,15 +169,16 @@
   background-color: #f2cc8f;
 }
 
-.taskDetails {
+.task-details {
   background-color: #f2cc8f;
 }
 
-.taskCheck {
+.check-task {
   width: 20px;
   height: 20px;
   border: solid 2px black;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .checked {
@@ -187,9 +188,9 @@
   background-origin: border-box;
 }
 
-.expandBtn,
-.deleteBtn,
-.editTask {
+.expand-btn,
+.delete-btn,
+.edit-task-btn {
   width: 20px;
   height: 20px;
   background-position: center;
@@ -198,22 +199,22 @@
   cursor: pointer;
 }
 
-.expandBtn {
+.expand-btn {
   background-image: url(./images/chevron-down.png);
   margin-right: 10px;
 }
-.deleteBtn {
+.delete-btn {
   background-image: url(./images/trashcan.png);
 }
 
-.taskDetails {
+.task-details {
   display: grid;
   grid-template-columns: 1fr 60px;
   justify-items: center;
   align-items: center;
   padding: 0 10px 10px 10px;
 }
-.editTask {
+.edit-task-btn {
   background-image: url(./images/square-edit-outline.png);
 }
 /* MAIN */

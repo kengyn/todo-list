@@ -1,4 +1,4 @@
-import { projectList, projectProcess } from "./projects";
+import { projectList, projectProcess, resetDataNum } from "./projects";
 
 // projects
 const projectContainer = document.querySelector(".project-container");
@@ -7,6 +7,7 @@ const projectsForm = document.querySelector(".add-project-form");
 const addProjectInput = document.querySelector(".add-project-input");
 const addProjectBtn = document.querySelector(".add-project-btn");
 const cancelProjectBtn = document.querySelector(".cancel-project-btn");
+// const deleteProjectBtn = document.querySelector(".kill-project");
 
 projectsBtn.addEventListener("click", () => {
   projectsForm.classList.remove("hidden");
@@ -15,6 +16,9 @@ projectsBtn.addEventListener("click", () => {
 
 addProjectBtn.addEventListener("click", () => {
   projectProcess(addProjectInput.value);
+  addProjectInput.value = "";
+  projectsForm.classList.add("hidden");
+  projectsBtn.classList.remove("hidden");
 });
 
 cancelProjectBtn.addEventListener("click", () => {
@@ -22,6 +26,8 @@ cancelProjectBtn.addEventListener("click", () => {
   projectsForm.classList.add("hidden");
   projectsBtn.classList.remove("hidden");
 });
+
+document.addEventListener("click", deleteProject);
 
 // const displayProjects = (projectList) => {
 //   for (let project of projectList) {
@@ -46,6 +52,25 @@ const projectToDOM = (dataNum, Name) => {
   projectObj.appendChild(projectBtn);
 
   projectContainer.appendChild(projectObj);
+};
+
+function deleteProject(e) {
+  let element = e.target;
+  let dataNum = e.composedPath()[1].dataset.num;
+  if (element.classList.contains("kill-project")) {
+    projectList.splice(dataNum, 1);
+    e.target.parentElement.remove();
+    resetDomDataNum();
+    resetDataNum();
+    console.log(projectList);
+  }
+}
+
+const resetDomDataNum = () => {
+  let domData = document.querySelectorAll("[data-num]");
+  for (let data of domData) {
+    data.dataset.num = Array.prototype.indexOf.call(domData, data);
+  }
 };
 
 // tasks

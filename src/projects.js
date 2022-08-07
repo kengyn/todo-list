@@ -21,4 +21,10 @@ const setDataNum = () => {
   return datanum.length;
 };
 
-export { projectList, projectProcess };
+function resetDataNum() {
+  for (let project of projectList) {
+    project.dataNum = projectList.indexOf(project);
+  }
+}
+
+export { projectList, projectProcess, resetDataNum };

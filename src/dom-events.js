@@ -71,6 +71,8 @@ const projectToDOM = (dataNum, Name) => {
   projectObj.appendChild(projectBtn);
 
   projectContainer.appendChild(projectObj);
+
+  displayTasks(dataNum);
 };
 
 const resetDomDataNum = () => {
@@ -94,6 +96,7 @@ function selectProject(e) {
   if (element.classList.contains("project-name")) {
     clearSelected();
     element.parentElement.classList.add("selected");
+    displayTasks(element.parentElement.dataset.num);
   }
 }
 
@@ -113,14 +116,18 @@ addTaskBtn.addEventListener("click", () => {
 });
 
 cancelTaskBtn.addEventListener("click", () => {
-  addProjectInput.value = "";
+  taskTitle.value = "";
+  taskDetails.value = "";
+  dueDate.value = "";
   addTaskContainer.classList.add("hidden");
   addTaskBtn.classList.remove("hidden");
 });
 
 confirmTaskBtn.addEventListener("click", () => {
   taskProcess(taskTitle.value, taskDetails.value, dueDate.value);
-  addProjectInput.value = "";
+  taskTitle.value = "";
+  taskDetails.value = "";
+  dueDate.value = "";
   addTaskContainer.classList.add("hidden");
   addTaskBtn.classList.remove("hidden");
 });
@@ -195,4 +202,13 @@ function deleteTask(e) {
     resetDataId();
   }
 }
+
+let displayTasks = (project) => {
+  AllTasksContainer.replaceChildren();
+  let selectedProject = projectList[project].tasks;
+  for (let task of selectedProject) {
+    taskToDom(task.id, task.title, task.details, task.dueDate);
+  }
+};
+
 export { projectToDOM, taskToDom };

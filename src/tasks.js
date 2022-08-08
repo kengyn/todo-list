@@ -1,5 +1,5 @@
 import { projectList } from "./projects";
-import { taskToDom } from "./dom-events";
+import { taskToDom, displayTasks } from "./dom-events";
 
 //task factory
 const taskFactory = (dataNum, id, title, details, dueDate, completed) => {
@@ -35,4 +35,38 @@ function resetDataId() {
   }
 }
 
-export { taskProcess, selected, resetDataId };
+function confirmEditTask(e) {
+  let tasks =
+    projectList[selected()].tasks[e.composedPath()[2].firstChild.dataset.id];
+  let newTitle = e.composedPath()[2].firstChild.children[1].value;
+  let newDate = e.composedPath()[2].firstChild.children[2].value;
+  let newDetails = e.composedPath()[2].children[1].firstChild.value;
+
+  tasks.title = newTitle;
+  tasks.details = newDetails;
+  tasks.dueDate = newDate;
+
+  displayTasks(selected());
+}
+
+function cancelEditTask() {
+  displayTasks(selected());
+}
+
+let completeTask = (e) => {
+  console.log(e);
+  e.target.classList.toggle("checked");
+  e.composedPath()[1].classList.toggle("completed");
+  projectList[selected()].tasks[
+    e.composedPath()[2].firstChild.dataset.id
+  ].completed = true;
+};
+
+export {
+  taskProcess,
+  selected,
+  resetDataId,
+  confirmEditTask,
+  cancelEditTask,
+  completeTask,
+};

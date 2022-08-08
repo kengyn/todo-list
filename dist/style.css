@@ -234,6 +234,10 @@ textarea,
   background-color: #f2cc8f;
 }
 
+.completed {
+  text-decoration: line-through;
+}
+
 .task-details {
   background-color: #f2cc8f;
 }

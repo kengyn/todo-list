@@ -1,5 +1,12 @@
 import { projectList, projectProcess, resetDataNum } from "./projects";
-import { taskProcess, selected, resetDataId } from "./tasks";
+import {
+  taskProcess,
+  selected,
+  resetDataId,
+  confirmEditTask,
+  cancelEditTask,
+  completeTask,
+} from "./tasks";
 
 // projects
 const projectContainer = document.querySelector(".project-container");
@@ -49,6 +56,9 @@ document.addEventListener("click", (e) => {
   }
   if (element.classList.contains("edit-cancel-btn")) {
     cancelEditTask(e);
+  }
+  if (element.classList.contains("check-task")) {
+    completeTask(e);
   }
 });
 function deleteProject(e) {
@@ -255,25 +265,6 @@ function addEditForm(e) {
   e.composedPath()[2].appendChild(editBtnContainer);
 }
 
-function confirmEditTask(e) {
-  console.log(e);
-  let tasks =
-    projectList[selected()].tasks[e.composedPath()[2].firstChild.dataset.id];
-  let newTitle = e.composedPath()[2].firstChild.children[1].value;
-  let newDate = e.composedPath()[2].firstChild.children[2].value;
-  let newDetails = e.composedPath()[2].children[1].firstChild.value;
-
-  tasks.title = newTitle;
-  tasks.details = newDetails;
-  tasks.dueDate = newDate;
-
-  displayTasks(selected());
-}
-
-function cancelEditTask() {
-  displayTasks(selected());
-}
-
 let displayTasks = (project) => {
   AllTasksContainer.replaceChildren();
   let selectedProject = projectList[project].tasks;
@@ -282,4 +273,4 @@ let displayTasks = (project) => {
   }
 };
 
-export { projectToDOM, taskToDom };
+export { projectToDOM, taskToDom, displayTasks };

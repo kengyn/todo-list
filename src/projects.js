@@ -1,4 +1,4 @@
-import projectToDOM from "./dom-events";
+import { projectToDOM } from "./dom-events";
 
 const projectList = [];
 
@@ -8,11 +8,11 @@ const projectFactory = (dataNum, projectName, tasks) => {
 };
 
 const projectProcess = (projectName) => {
-  let name = projectName;
+  //   let name = projectName;
   let dataNum = setDataNum();
-  let newProject = projectFactory(dataNum, name, []);
+  let newProject = projectFactory(dataNum, projectName, []);
   projectList.push(newProject);
-  projectToDOM(dataNum, name);
+  projectToDOM(dataNum, projectName);
   console.log(projectList);
 };
 

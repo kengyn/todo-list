@@ -258,6 +258,11 @@ textarea {
   align-items: center;
   padding: 0 10px 10px 10px;
 }
+
+.task-details .task-description {
+  justify-self: flex-start;
+}
+
 .edit-task-btn {
   background-image: url(./images/square-edit-outline.png);
 }

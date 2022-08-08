@@ -130,7 +130,8 @@
 }
 
 .add-project-form button,
-.add-task-btns-container button {
+.add-task-btns-container button,
+.edit-btn-container button {
   margin-top: 5px;
   padding: 5px 0 5px 0;
   width: 50%;
@@ -191,7 +192,9 @@
 }
 
 .input-container input,
-textarea {
+textarea,
+.edit-name-input,
+.edit-date-input {
   font-size: 1rem;
   background-color: #f4f1de;
   border: none;
@@ -288,5 +291,25 @@ textarea {
 
 .edit-task-btn {
   background-image: url(./images/square-edit-outline.png);
+}
+
+.edit-name-input {
+  width: 95%;
+  margin-right: 4px;
+}
+
+.edit-details-input {
+  width: 100%;
+}
+
+.edit-date-input {
+  width: 45%;
+}
+
+.edit-btn-container {
+  width: 30%;
+  display: flex;
+  gap: 10px;
+  justify-self: center;
 }
 /* MAIN */

@@ -1,5 +1,5 @@
 import { projectList, projectProcess, resetDataNum } from "./projects";
-import { taskProcess } from "./tasks";
+import { taskProcess, selected, resetDataId } from "./tasks";
 
 // projects
 const projectContainer = document.querySelector(".project-container");
@@ -27,7 +27,12 @@ cancelProjectBtn.addEventListener("click", () => {
   projectsBtn.classList.remove("hidden");
 });
 
-document.addEventListener("click", deleteProject);
+document.addEventListener("click", (e) => {
+  deleteProject(e);
+  selectProject(e);
+  expandTask(e);
+  deleteTask(e);
+});
 function deleteProject(e) {
   let element = e.target;
   let dataNum = e.composedPath()[1].dataset.num;
@@ -36,7 +41,6 @@ function deleteProject(e) {
     e.target.parentElement.remove();
     resetDomDataNum();
     resetDataNum();
-    console.log(projectList);
   }
 }
 // const displayProjects = (projectList) => {
@@ -85,19 +89,17 @@ function clearSelected() {
   }
 }
 
-document.addEventListener("click", selectProject);
 function selectProject(e) {
   let element = e.target;
   if (element.classList.contains("project-name")) {
     clearSelected();
-    // console.log(element.parentElement);
     element.parentElement.classList.add("selected");
   }
 }
 
 // tasks
 const addTaskBtn = document.querySelector(".add-task-btn");
-const mainContainer = document.querySelector(".main-container");
+const AllTasksContainer = document.querySelector(".all-tasks-container");
 const addTaskContainer = document.querySelector(".add-task-container");
 const taskTitle = document.querySelector(".add-task-title");
 const dueDate = document.querySelector(".add-due-date");
@@ -123,7 +125,7 @@ confirmTaskBtn.addEventListener("click", () => {
   addTaskBtn.classList.remove("hidden");
 });
 
-const taskToDom = (title, details, dueDate) => {
+const taskToDom = (newId, title, details, dueDate) => {
   let taskContainer = document.createElement("div");
   let task = document.createElement("div");
   let checkTask = document.createElement("div");
@@ -138,6 +140,7 @@ const taskToDom = (title, details, dueDate) => {
 
   taskContainer.classList.add("task-container");
   task.classList.add("task");
+  task.dataset.id = newId;
   checkTask.classList.add("check-task");
   taskTitle.classList.add("task-title");
   taskDate.classList.add("due-date");
@@ -163,7 +166,33 @@ const taskToDom = (title, details, dueDate) => {
   detailsContainer.appendChild(editBtn);
   taskContainer.appendChild(task);
   taskContainer.appendChild(detailsContainer);
-  mainContainer.appendChild(taskContainer);
+  AllTasksContainer.appendChild(taskContainer);
 };
 
+function expandTask(e) {
+  let element = e.target;
+  if (element.classList.contains("expand-btn")) {
+    element.classList.toggle("expand-up");
+    element.parentElement.parentElement.nextSibling.classList.toggle("hidden");
+  }
+}
+
+const resetDomDataId = () => {
+  let domData = document.querySelectorAll("[data-id]");
+  for (let data of domData) {
+    data.dataset.id = Array.prototype.indexOf.call(domData, data);
+  }
+};
+
+function deleteTask(e) {
+  let element = e.target;
+  let dataNum = selected();
+  let taskNum = e.composedPath()[2].dataset.id;
+  if (element.classList.contains("delete-btn")) {
+    projectList[dataNum].tasks.splice(taskNum, 1);
+    e.target.parentElement.parentElement.parentElement.remove();
+    resetDomDataId();
+    resetDataId();
+  }
+}
 export { projectToDOM, taskToDom };

@@ -2,16 +2,21 @@ import { projectList } from "./projects";
 import { taskToDom } from "./dom-events";
 
 //task factory
-const taskFactory = (dataNum, title, details, dueDate, completed) => {
-  return { dataNum, title, details, dueDate, completed };
+const taskFactory = (dataNum, id, title, details, dueDate, completed) => {
+  return { dataNum, id, title, details, dueDate, completed };
+};
+
+let id = () => {
+  return projectList[selected()].tasks.length;
 };
 
 function taskProcess(title, details, dueDate) {
+  let newId = id();
   let dataNum = selected();
-  let newTask = taskFactory(dataNum, title, details, dueDate, false);
+  let newTask = taskFactory(dataNum, newId, title, details, dueDate, false);
   projectList[dataNum].tasks.push(newTask);
 
-  taskToDom(title, details, dueDate);
+  taskToDom(newId, title, details, dueDate);
 }
 
 function selected() {
@@ -23,4 +28,11 @@ function selected() {
   }
 }
 
-export { taskProcess };
+function resetDataId() {
+  let taskList = projectList[selected()].tasks;
+  for (let task of taskList) {
+    task.id = taskList.indexOf(task);
+  }
+}
+
+export { taskProcess, selected, resetDataId };

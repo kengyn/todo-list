@@ -28,20 +28,38 @@ cancelProjectBtn.addEventListener("click", () => {
 });
 
 document.addEventListener("click", (e) => {
-  deleteProject(e);
-  selectProject(e);
-  expandTask(e);
-  deleteTask(e);
+  let element = e.target;
+  if (element.classList.contains("kill-project")) {
+    deleteProject(e);
+  }
+  if (element.classList.contains("project-name")) {
+    selectProject(element);
+  }
+  if (element.classList.contains("expand-btn")) {
+    expandTask(element);
+  }
+  if (element.classList.contains("delete-btn")) {
+    deleteTask(e);
+  }
+  if (element.classList.contains("edit-task-btn")) {
+    addEditForm(e);
+  }
+  if (element.classList.contains("edit-confirm-btn")) {
+    confirmEditTask(e);
+  }
+  if (element.classList.contains("edit-cancel-btn")) {
+    cancelEditTask(e);
+  }
 });
 function deleteProject(e) {
-  let element = e.target;
+  // let element = e.target;
   let dataNum = e.composedPath()[1].dataset.num;
-  if (element.classList.contains("kill-project")) {
-    projectList.splice(dataNum, 1);
-    e.target.parentElement.remove();
-    resetDomDataNum();
-    resetDataNum();
-  }
+  // if (element.classList.contains("kill-project")) {
+  projectList.splice(dataNum, 1);
+  e.target.parentElement.remove();
+  resetDomDataNum();
+  resetDataNum();
+  // }
 }
 // const displayProjects = (projectList) => {
 //   for (let project of projectList) {
@@ -92,12 +110,12 @@ function clearSelected() {
 }
 
 function selectProject(e) {
-  let element = e.target;
-  if (element.classList.contains("project-name")) {
-    clearSelected();
-    element.parentElement.classList.add("selected");
-    displayTasks(element.parentElement.dataset.num);
-  }
+  // let element = e.target;
+  // if (element.classList.contains("project-name")) {
+  clearSelected();
+  e.parentElement.classList.add("selected");
+  displayTasks(e.parentElement.dataset.num);
+  // }
 }
 
 // tasks
@@ -177,11 +195,11 @@ const taskToDom = (newId, title, details, dueDate) => {
 };
 
 function expandTask(e) {
-  let element = e.target;
-  if (element.classList.contains("expand-btn")) {
-    element.classList.toggle("expand-up");
-    element.parentElement.parentElement.nextSibling.classList.toggle("hidden");
-  }
+  // let element = e.target;
+  // if (element.classList.contains("expand-btn")) {
+  e.classList.toggle("expand-up");
+  e.parentElement.parentElement.nextSibling.classList.toggle("hidden");
+  // }
 }
 
 const resetDomDataId = () => {
@@ -192,15 +210,68 @@ const resetDomDataId = () => {
 };
 
 function deleteTask(e) {
-  let element = e.target;
+  // let element = e.target;
   let dataNum = selected();
   let taskNum = e.composedPath()[2].dataset.id;
-  if (element.classList.contains("delete-btn")) {
-    projectList[dataNum].tasks.splice(taskNum, 1);
-    e.target.parentElement.parentElement.parentElement.remove();
-    resetDomDataId();
-    resetDataId();
-  }
+  // if (element.classList.contains("delete-btn")) {
+  projectList[dataNum].tasks.splice(taskNum, 1);
+  e.target.parentElement.parentElement.parentElement.remove();
+  resetDomDataId();
+  resetDataId();
+  // }
+}
+
+function addEditForm(e) {
+  let editName = document.createElement("input");
+  let editDate = document.createElement("input");
+  editDate.setAttribute("type", "date");
+  let editDetails = document.createElement("textarea");
+  let editBtnContainer = document.createElement("div");
+  let editConfirmBtn = document.createElement("button");
+  let editCancelBtn = document.createElement("button");
+
+  editName.classList.add("edit-name-input");
+  editDate.classList.add("edit-date-input");
+  editDetails.classList.add("edit-details-input");
+  editBtnContainer.classList.add("edit-btn-container");
+  editConfirmBtn.classList.add("edit-confirm-btn");
+  editCancelBtn.classList.add("edit-cancel-btn");
+
+  editConfirmBtn.textContent = "Confirm";
+  editCancelBtn.textContent = "Cancel";
+
+  editName.value = e.composedPath()[2].firstChild.children[1].innerText;
+  e.composedPath()[2].firstChild.children[1].replaceWith(editName);
+
+  editDate.value = e.composedPath()[2].firstChild.children[2].innerText;
+  e.composedPath()[2].firstChild.children[2].replaceWith(editDate);
+
+  editDetails.value = e.composedPath()[1].firstChild.innerText;
+  e.composedPath()[1].firstChild.replaceWith(editDetails);
+
+  editBtnContainer.appendChild(editConfirmBtn);
+  editBtnContainer.appendChild(editCancelBtn);
+
+  e.composedPath()[2].appendChild(editBtnContainer);
+}
+
+function confirmEditTask(e) {
+  console.log(e);
+  let tasks =
+    projectList[selected()].tasks[e.composedPath()[2].firstChild.dataset.id];
+  let newTitle = e.composedPath()[2].firstChild.children[1].value;
+  let newDate = e.composedPath()[2].firstChild.children[2].value;
+  let newDetails = e.composedPath()[2].children[1].firstChild.value;
+
+  tasks.title = newTitle;
+  tasks.details = newDetails;
+  tasks.dueDate = newDate;
+
+  displayTasks(selected());
+}
+
+function cancelEditTask() {
+  displayTasks(selected());
 }
 
 let displayTasks = (project) => {

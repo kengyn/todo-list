@@ -8,12 +8,10 @@ const projectFactory = (dataNum, projectName, tasks) => {
 };
 
 const projectProcess = (projectName) => {
-  //   let name = projectName;
   let dataNum = setDataNum();
   let newProject = projectFactory(dataNum, projectName, []);
   projectList.push(newProject);
   projectToDOM(dataNum, projectName);
-  // console.log(projectList);
 };
 
 const setDataNum = () => {
